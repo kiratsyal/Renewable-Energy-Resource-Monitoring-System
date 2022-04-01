@@ -75,3 +75,5 @@ public class Main {
         br.read();
     }
 }
+//initialized first                             initialized last
+//Static variable -> static method -> static block

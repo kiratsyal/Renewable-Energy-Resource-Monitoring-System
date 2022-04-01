@@ -1,49 +1,29 @@
+package com.christ.rerms;
+import com.christ.rerms.dependencies.*;
+import com.christ.rerms.dependencies.functional.*;
+import com.christ.rerms.dependencies.nonFunctional.*;
+import com.christ.rerms.dependencies.userLogin.*;
 import java.io.*;
+
 //import java.util.*;
 //import java.net.HttpURLConnection;
 //import java.net.ProtocolException;
 //import java.net.URL;
 //import org.json.simple.JSONObject;
 
+//DOCUMENTATION :-
+//
+/*The idea is to develop an application in CUI to monitor nodes in a power grid */
+
 /*
 Implement the concept of class, data members, 
 member functions and access specifiers in your domain. 
 Follow the required programming standards.
 */
+    
+    
 
-class Member {
-    int consumerID, contact, AadhaarNo;
-    int solarDevs, windDevs, hydroElecDevs, geothermalDevs;
-    String name, dob, password;
-
-    Member(int consumerID, int contact, int AadhaarNo, String password, String name, String dob, int solarDevs,
-            int windDevs, int hydroElecDevs, int geothermalDevs) {
-        this.consumerID = consumerID;
-        this.password = password;
-        this.contact = contact;
-        this.AadhaarNo = AadhaarNo;
-        this.name = name;
-        this.dob = dob;
-        // no. of devices the Member has
-        this.solarDevs = solarDevs;
-        this.windDevs = windDevs;
-        this.hydroElecDevs = hydroElecDevs;
-        this.geothermalDevs = geothermalDevs;
-    }
-
-    protected void printMem() {
-        System.out.println("Name : " + this.name);
-        System.out.println("Consumer ID : " + this.consumerID);
-        System.out.println("Contact No. : " + this.contact);
-        System.out.println("Aadhar No. : " + this.AadhaarNo);
-        System.out.println("Date of birth : " + this.dob);
-        System.out.println("No. of Solar devices owned : " + this.solarDevs);
-        System.out.println("No. of Wind devices owned : " + this.windDevs);
-        System.out.println("No. of Hydroelectric devices owned : " + this.hydroElecDevs);
-        System.out.println("No. of Geothermal devices owned : " + this.geothermalDevs);
-    }
-}
-
+    
 public class App {
     /*
      * protected static void parseCreds() throws ProtocolException, IOException {
@@ -83,7 +63,7 @@ public class App {
         status[0] = 0; // to determine whether the record exists in the database or not
         status[1] = 0; // to return the index in the array of objects if the record exists
         for (int i = 0; i < members.length; i++) {
-            if ((Integer.parseInt(creds[0]) == members[i].consumerID) && (creds[1].equals(members[i].password))) {
+            if ((creds[0].equals(members[i].consumerID)) && (creds[1].equals(members[i].password))) {
                 status[0] = 1;
                 status[1] = i;
                 return status;
@@ -98,39 +78,38 @@ public class App {
         for (int i = 0; i < len; i++)
             newList[i] = memList[i];
         System.gc();
-
         return newList;
     }
 
-    protected static Member addMember(int con_id) throws IOException {
+    protected static Member addMember(String con_id) throws IOException {
 
-        int contact, AadhaarNo;
-        String password, name, dob;
+        String contact, password, name, AadhaarNo, dob;
         int solarDevs, windDevs, hydroElecDevs, geothermalDevs;
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.print("\nEnter Name : ");
+        System.out.print("Enter Name : ");
         name = br.readLine();
-        System.out.print("\nEnter Contact No. : ");
-        contact = Integer.parseInt(br.readLine());
-        System.out.print("\nEnter Aadhar No. : ");
-        AadhaarNo = Integer.parseInt(br.readLine());
-        System.out.print("\nEnter Date of birth : ");
+        System.out.print("Enter Contact No. : ");
+        contact = br.readLine();
+        System.out.print("Enter Aadhar No. : ");
+        AadhaarNo = br.readLine();
+        System.out.print("Enter Date of birth : ");
         dob = br.readLine();
-        System.out.print("\nEnter Password : ");
+        System.out.print("Enter Password : ");
         password = br.readLine();
-        System.out.print("\nEnter No. of Solar devices owned : ");
+        System.out.print("Enter No. of Solar devices owned : ");
         solarDevs = Integer.parseInt(br.readLine());
-        System.out.print("\nEnter No. of Wind devices owned : ");
+        System.out.print("Enter No. of Wind devices owned : ");
         windDevs = Integer.parseInt(br.readLine());
-        System.out.print("\nEnter No. of Hydroelectric devices owned : ");
+        System.out.print("Enter No. of Hydroelectric devices owned : ");
         hydroElecDevs = Integer.parseInt(br.readLine());
-        System.out.print("\nEnter No. of Geothermal devices owned : ");
+        System.out.print("Enter No. of Geothermal devices owned : ");
         geothermalDevs = Integer.parseInt(br.readLine());
+        System.out.println("Your unique consumer ID is, " + con_id);
 
-        Member temp = new Member(con_id, contact, AadhaarNo, password, name, dob, solarDevs,
-                windDevs, hydroElecDevs, geothermalDevs);
+        Member temp = new Member(con_id, contact, AadhaarNo, password, name, dob, solarDevs, windDevs, hydroElecDevs,
+                geothermalDevs);
 
         return temp;
     }
@@ -145,10 +124,25 @@ public class App {
         return Character.toUpperCase((char) reader.read());
     }
 
+    protected static char menu1() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("[ 1 ] : add SOLAR DEVICE");
+        System.out.println("[ 2 ] : add WIND DEVICE");
+        System.out.println("[ 3 ] : add HYDROELECTRIC DEVICE");
+        // System.out.println("[ 4 ] : add GEOTHERMAL DEVICE");
+        System.out.println("[ X ] : EXIT");
+        System.out.print("[ > ] : ");
+        return Character.toUpperCase((char) reader.read());
+    }
+
     public static void main(String[] args) throws Exception {
+        //initialize the power grid
+        
+
         boolean flag = true;
-        int con_id = 2147100, len = 0;
-        String creds[] = new String[2];
+        int len = 0, count = 0;
+        char ch;
+        String creds[] = new String[2], con_id = "2147100";
         Member members[] = new Member[1];
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -183,8 +177,37 @@ public class App {
                     case '2': // sign-up
                         members = addNode(members);
                         members[len] = addMember(con_id);
-                        con_id++;
+                        con_id = String.valueOf(Integer.parseInt(con_id) + 1);
                         len++;
+                        System.gc();
+                        break;
+
+                    case '3': // Add device
+                        Device dev[] = new Device[5];
+                        switch (menu1()) {
+                            case '1':
+                                System.out.println("Adding a Solar device : ");
+                                dev[count] = Device();
+                                count++;
+                                break;
+
+                            case '2':
+                                System.out.println("Adding a Wind device : ");
+                                dev[count] = Device();
+                                count++;
+                                break;
+
+                            case '3':
+                                System.out.println("Adding a Hydroelectic device : ");
+                                dev[count] = Device();
+                                count++;
+                                break;
+
+                            default:
+                                System.out.println("WRONG INPUT!!");
+                                reader.read();
+                                break;
+                        }
                         System.gc();
                         break;
 
