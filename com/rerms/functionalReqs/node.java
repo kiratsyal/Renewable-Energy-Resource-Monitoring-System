@@ -6,11 +6,11 @@ public class node {
     static int capacity = 1000; // Each battery is of capcity 1000MWh
     // String CommisionDate;
 
-    Node(int curr_capacity) {
+    node(int curr_capacity) {
         this.curr_capacity = curr_capacity;
     }
 
-    Node(boolean status, char NodeType, float Wattage) {
+    node(boolean status, char NodeType, float Wattage) {
         this.status = status;
         this.NodeType = NodeType;
         this.Wattage = Wattage;
@@ -20,5 +20,5 @@ public class node {
             this.curr_capacity = Integer.parseInt(br.readLine());
         }
     }
-    
+
 }

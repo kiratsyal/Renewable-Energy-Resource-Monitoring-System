@@ -1,3 +1,5 @@
+package com.rerms.functionalReqs;
+
 class grid {
     Node grid[];
 

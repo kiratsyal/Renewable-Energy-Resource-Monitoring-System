@@ -1,8 +1,8 @@
-package com.christ.rerms;
-import com.christ.rerms.dependencies.*;
-import com.christ.rerms.dependencies.functional.*;
-import com.christ.rerms.dependencies.nonFunctional.*;
-import com.christ.rerms.dependencies.userLogin.*;
+package com.rerms;
+
+import com.rerms.*;
+import com.rerms.functionalReqs.*;
+import com.rerms.nonFunctionalReqs.*;
 import java.io.*;
 
 //import java.util.*;
@@ -20,45 +20,10 @@ Implement the concept of class, data members,
 member functions and access specifiers in your domain. 
 Follow the required programming standards.
 */
-    
-    
 
-    
 public class App {
-    /*
-     * protected static void parseCreds() throws ProtocolException, IOException {
-     * String line;
-     * StringBuffer response = new StringBuffer();
-     * BufferedReader reader;
-     * try {
-     * // Boolean flag;
-     * // String url =
-     * //
-     * "https://raw.githubusercontent.com/bernardbdas/Renewable-Energy-Resource-Monitoring-System/main/userCreds.json";
-     * URL obj = new URL(
-     * "https://raw.githubusercontent.com/bernardbdas/Renewable-Energy-Resource-Monitoring-System/main/userCreds.json"
-     * );
-     * HttpURLConnection connect = (HttpURLConnection) obj.openConnection();
-     * connect.setRequestMethod("GET");
-     * int responseCode = connect.getResponseCode();
-     * if (responseCode > 299) {
-     * reader = new BufferedReader(new InputStreamReader(connect.getErrorStream()));
-     * while ((line = reader.readLine()) != null)
-     * response.append(line);
-     * reader.close();
-     * } else {
-     * reader = new BufferedReader(new InputStreamReader(connect.getInputStream()));
-     * while ((line = reader.readLine()) != null)
-     * response.append(line);
-     * reader.close();
-     * }
-     * } catch (Exception e) {
-     * e.printStackTrace();
-     * }
-     * }
-     */
 
-    protected static int[] signIn(String creds[], Member members[]) {
+    protected static int[] signIn(StringBuffer creds[], Member members[]) {
         int status[] = new int[2];
         status[0] = 0; // to determine whether the record exists in the database or not
         status[1] = 0; // to return the index in the array of objects if the record exists
@@ -136,8 +101,7 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        //initialize the power grid
-        
+        // initialize the power grid
 
         boolean flag = true;
         int len = 0, count = 0;
