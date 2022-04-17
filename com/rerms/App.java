@@ -1,20 +1,13 @@
+// package name
 package com.rerms;
 
-import com.rerms.*;
-import com.rerms.functionalReqs.*;
-import com.rerms.nonFunctionalReqs.*;
+// imports
 import java.io.*;
-
-//import java.util.*;
-//import java.net.HttpURLConnection;
-//import java.net.ProtocolException;
-//import java.net.URL;
-//import org.json.simple.JSONObject;
+import com.rerms.functionalReqs.*;
 
 //DOCUMENTATION :-
 //
 /*The idea is to develop an application in CUI to monitor nodes in a power grid */
-
 /*
 Implement the concept of class, data members, 
 member functions and access specifiers in your domain. 
@@ -99,9 +92,12 @@ public class App {
         System.out.print("[ > ] : ");
         return Character.toUpperCase((char) reader.read());
     }
-
+w
     public static void main(String[] args) throws Exception {
+        
         // initialize the power grid
+
+        
 
         boolean flag = true;
         int len = 0, count = 0;
