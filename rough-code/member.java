@@ -1,3 +1,4 @@
+package src;
 class member {
     int solarDevs, windDevs, hydroElecDevs, geothermalDevs;
     String consumerID, contact, name, dob, password, AadhaarNo;

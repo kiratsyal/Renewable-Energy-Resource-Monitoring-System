@@ -1,3 +1,9 @@
 https://www.tutorialspoint.com/can-a-this-keyword-be-used-to-refer-to-static-members-in-java#:~:text=No%2C%20the%20%22this%22%20keyword,static%20members%20of%20a%20class.
 https://www.tutorialspoint.com/can-we-initialize-static-variables-in-a-default-constructor-in-java#:~:text=You%20can%20define%20a%20static,these%20values%20using%20the%20constructor.
 https://www.tutorialspoint.com/what-are-the-restrictions-imposed-on-a-static-method-or-a-static-block-of-code-in-java#:~:text=Static%20methods%20belong%20to%20the,to%20initialize%20the%20static%20members.
+https://www.geeksforgeeks.org/string-vs-stringbuilder-vs-stringbuffer-in-java/
+https://www.javatpoint.com/collections-in-java
+https://www.javatpoint.com/how-to-create-object-in-java
+https://www.tutorialspoint.com/can-we-use-switch-statement-with-strings-in-java#:~:text=It%20is%20recommended%20to%20use,switch%20statement%20is%20case%20sensitive.
+https://www.tutorialspoint.com/how-can-we-read-a-json-file-in-java
+

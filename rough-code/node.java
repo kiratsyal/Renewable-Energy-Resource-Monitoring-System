@@ -1,3 +1,4 @@
+package src;
 public class node {
     char NodeType; // 'p'- producer, 'c'- consumer, 'b'-store and release from battery
     int curr_capacity; // battery capacity in percentage

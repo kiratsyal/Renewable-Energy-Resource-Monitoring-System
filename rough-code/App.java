@@ -1,5 +1,5 @@
 // package name
-package com.rerms;
+package src;
 
 // imports
 import java.io.*;
