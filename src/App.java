@@ -6,17 +6,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import com.rerms.functionalReqs.*;
 import com.rerms.NonfunctionalReqs.*;
 
+class Login {
 
-class Login implements Login{
+    ArrayList<LinkedList<String>> adminCreds = new ArrayList<LinkedList<String>>();
+    ArrayList<LinkedList<String>> memCreds = new ArrayList<LinkedList<String>>();
 
-    static ArrayList<LinkedList<String>> adminCreds = new ArrayList<LinkedList<String>>();
-    static ArrayList<LinkedList<String>> memCreds = new ArrayList<LinkedList<String>>();
-
-    public Login() {
-    }
+    //public Login() {}
 
     public void printCreds() {
         System.out.println("\nADMIN CREDS :-\n");
@@ -34,18 +33,18 @@ class Login implements Login{
         }
     }
 
-    public void addCreds(String username, String password, String mode){
+    public void addCreds(String username, String password, String mode) {
 
         // Adding Admin Creds
-        if (mode.equals("ASU")){
+        if (mode.equals("ASU")) {
             this.adminCreds.add(new ArrayList<String>.add(username));
-            this.adminCreds.indexOf(1).add(password));
+            this.adminCreds.indexOf(1).add(password);
         }
-        
+
         // Adding Member Creds
-        if (mode.equals("MSU")){
+        if (mode.equals("MSU")) {
             this.memCreds.add(new ArrayList<String>.add(username));
-            this.memCreds.indexOf(1).add(password));
+            this.memCreds.indexOf(1).add(password);
         }
     }
 
@@ -62,22 +61,25 @@ class Login implements Login{
                 if (username.equals(this.memCreds.indexOf(i).indexOf(0))
                         && username.equals(this.memCreds.indexOf(i).indexOf(1)))
                     return true;
-        
-        return false;
+
+            return false;
+        }
     }
 }
+
 public class App {
 
-    public static void print(String str) {
+    public static void print(StringBuilder str) {
         System.out.print(str);
     }
 
-    public static void printLn(String str) {
+    public static void printLn(StringBuilder str) {
         System.out.println(str);
     }
 
     public static String menu(int WhichMenu) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
         if (WhichMenu == 0) {
             print("\nLOGIN FUNCTIONALITIES :-\n");
             print("\n[ ASI ] : ADMIN Sign-In");
@@ -107,8 +109,9 @@ public class App {
         boolean flag = true;
         int WhichMenu = 0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Grid G1 = new Grid(20, 4, 5);
+        Grid myGrid = new Grid((int)args[0], (int)args[1]);
         Login login = new Login();
+        
         while (flag) {
             switch (menu(WhichMenu)) {
                 case "ASI":
@@ -140,7 +143,6 @@ public class App {
                 default:
                     break;
             }
-            print("Hello JAVA\n\t" + 234);
         }
     }
 }

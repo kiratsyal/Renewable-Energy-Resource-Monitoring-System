@@ -6,8 +6,8 @@ import org.json.simple.parser.*;
 
 interface Login {
 
-    static ArrayList<LinkedList<String>> adminCreds = new ArrayList<LinkedList<String>>();
-    static ArrayList<LinkedList<String>> memCreds = new ArrayList<LinkedList<String>>();
+    ArrayList<LinkedList<String>> adminCreds = new ArrayList<LinkedList<String>>();
+    ArrayList<LinkedList<String>> memCreds = new ArrayList<LinkedList<String>>();
 
     public void printCreds() {}
 
