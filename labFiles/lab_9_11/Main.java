@@ -1,4 +1,4 @@
-package Collections;
+//package lab_9_11;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,13 +28,12 @@ class Device {
         this.dev_type = dev_type;
         this.owner_name = owner_name.substring(0, 1).toUpperCase() + owner_name.substring(1);
         this.power_required = power_required;
-        this.dev_count += 1;
+        //this.dev_count += 1;
     }
 }
 
 public class Main {
-
-    public static String containsNum(StringBuffer str) {
+    public static String containsNum(String str) {
         char[] chars = str.toCharArray();
         StringBuilder sb = new StringBuilder();
         for (char c : chars)
@@ -44,11 +43,37 @@ public class Main {
         return sb.toString();
     }
 
-    public static void main(String[] args) throws IOException {
-        int dev_type, i;
+    public static Device getInp() throws IOException{
+        int dev_type;
         float power_required;
-        boolean flag = true;
         StringBuffer name = new StringBuffer(30);
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            System.out.print("\nEnter Name of owner : ");
+            name.append(br.readLine());
+            if (containsNum(name.toString()).length() > 1)
+                throw new ContainsNumException("\nThe name must not contain numeric values...");
+
+        } catch (ContainsNumException CNE) {
+            System.out.println(CNE.getMessage());
+        } catch (Exception myEx) {
+            System.out.println(myEx);
+        } finally {
+            System.out.print("\nException or No Exception... Finally always executes!!\n");
+            // continue;
+        }
+        System.out.print(
+                "\n[ 1: Solar Panel, 2: Windmill, 3: HydroElectric Generator ]\nEnter device type : ");
+        dev_type = Integer.parseInt(br.read());
+        System.out.print("\n");
+        power_required = Float.parseFloat(br.readLine());
+
+        return new Device(name.toString(), dev_type, power_required);
+    }
+
+    public static void main(String[] args) throws IOException {
+        boolean flag = true;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         // Showing ArrayList of Class Device and using
         // Command Line arguments to initialize size of ArrayList
@@ -61,30 +86,8 @@ public class Main {
             switch ((char) br.read()) {
 
                 case '1':
-                    try {
-                        System.out.print("\nEnter Name of owner : ");
-                        name.append(br.readLine());
-                        if (containsNum(name).length() > 1)
-                            throw new ContainsNumException(s);
-
-                    } catch (Exception myEx) {
-                        System.out.println(myEx);
-                    } catch (ContainsNumException CNE) {
-                        System.out.println(myEx.getMessage());
-                    } finally {
-                        System.out.print("\nAn Exception has been handled successfully!!\n");
-                        System.out.println(myEx.getMessage());
-                        continue;
-                    }
-                    System.out.print(
-                            "\n[ 1: Solar Panel, 2: Windmill, 3: HydroElectric Generator ]\nEnter device type : ");
-                    dev_type = Integer.parseInt(br.readLine());
-                    System.out.print("\n");
-                    power_required = Float.parseFloat(br.readLine());
-
                     // Adding new object to arraylist
-                    Devices.add(new Device(name.toString(), dev_type, power_required));
-                    name.delete(0, 29);
+                    Devices.add(getInp());
                     break;
 
                 case '2':
@@ -102,20 +105,19 @@ public class Main {
                     break;
 
                 case '3':
-                    continue;
+                    // continue;
                     // for (Integer i : numbers)
                     // System.out.print(i + " ");
                     break;
 
                 case '4':
-                    continue;
+                    // continue;
                     break;
 
                 default:
                     System.out.print("\nInvalid Input ...\nTry Again ...\n");
                     break;
             }
-
             System.out.print("\nPress any key to continue ...");
             br.read();
         }

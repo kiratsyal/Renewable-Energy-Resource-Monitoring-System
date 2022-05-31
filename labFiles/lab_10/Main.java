@@ -1,18 +1,20 @@
-package Multithreading;
+package lab_10;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.Runnable;
-import java.util.Scanner;
 
 //  implementing runnable in the main class
 public class Main implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Executed");
+        System.out.println("\nExecuted");
     }
 
     // making the main function
-    public static void main(String[] args) {
+    public static void main(String[] args)throws IOException {
         // Creating a Thread -->
         Thread printer = new Thread();
 
@@ -25,27 +27,24 @@ public class Main implements Runnable {
             String username, password, cpassword;
 
             // Using the scanner class -->
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Enter your username: ");
-            username = sc.next();
-            System.out.println("Enter your password");
-            password = sc.next();
-            System.out.println("Renter your password");
-            cpassword = sc.next();
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.print("\nusername: ");
+            username = br.readLine();
+            System.out.print("\npassword: ");
+            password = br.readLine();
+            System.out.print("\nRenter password: ");
+            cpassword = br.readLine();
 
             // implementing the validations for password
-            if (password.length() == cpassword.length()) {
-                System.out.println("Welcome " + username);
-            } else if (password == cpassword) {
-                System.out.println("Hello " + username);
-            } else {
-                System.out.println("Password is invalid or does not match");
-            }
+            if (password.equals(cpassword))
+                System.out.println("\nWelcome " + username);
+            else
+                System.out.println("\nPassword is invalid or does not match");
 
             // making the thread sleep
             printer.sleep(1000);
         } catch (InterruptedException e) {
-            System.out.println("Exception catched");
+            System.out.print("\nException catched");
         }
 
         // setting the priority of the printer -->
@@ -54,6 +53,6 @@ public class Main implements Runnable {
         // getting the priority of the printer thread
         int demo = printer.getPriority();
         System.out.println(demo);
-        System.out.println("Thread Running");
+        System.out.print("\nThread Running");
     }
 }
